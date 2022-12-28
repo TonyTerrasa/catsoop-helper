@@ -18,9 +18,9 @@ openpyxl==3.0.10
 
 Some shortcuts I've included in my bash-aliases to make my process nicer
 ```
-alias csh-q="python ~/projects/catsoop-helper/csh.py -q"
-alias csh-mkpg="python ~/projects/catsoop-helper/csh.py -mkpg"
-alias csh-ntb="python ~/projects/catsoop-helper/csh.py -ntb"
+alias csh-q="python /path/to/catsoop-helper/csh.py -q"
+alias csh-mkpg="python /path/to/catsoop-helper/csh.py -mkpg"
+alias csh-ntb="python /path/to/catsoop-helper/csh.py -ntb"
 ```
 
 # Usage
@@ -92,7 +92,7 @@ For each bolded word, fill in a new word according to the symbol:
 Much like many of my __(=== class)__ at university, the goal of this website is to __(<-> take away)__ students with __(--> explain)__ and novel ways to explore the content, in this case English.
 ```
 
-It will number the three blanks given in between __([text])__ like this: 
+It will number the three blanks given in between `__([text])__` like this: 
 
 ```
 For each bolded word, fill in a new word according to the symbol:
