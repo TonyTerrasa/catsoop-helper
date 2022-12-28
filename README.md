@@ -77,3 +77,25 @@ For example running questions on [`sample.csv`](examples/sample.csv) gives:
 </question> 
 
 ```
+
+## Number Text Blanks
+This is helpful if you have a text and you want to turn it into a fill-in-the-blank exercise. For example, give something like the the following ([`number-me.md`](examples/number-me.md))
+```
+For each bolded word, fill in a new word according to the symbol:
+* (===) synonym 
+* (-->) related word
+* (<->) opposite
+
+Much like many of my __(=== class)__ at university, the goal of this website is to __(<-> take away)__ students with __(--> explain)__ and novel ways to explore the content, in this case English.
+```
+
+It will number the three blanks given in between __([text])__ like this: 
+
+```
+For each bolded word, fill in a new word according to the symbol:
+* (===) synonym 
+* (-->) related word
+* (<->) opposite
+
+Much like many of my __(1, === class)__ at university, the goal of this website is to __(2, <-> take away)__ students with __(3, --> explain)__ and novel ways to explore the content, in this case English.
+```
