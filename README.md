@@ -4,7 +4,7 @@ Python scripts that I use that I use in my catsoop site development
 # Install
 Download the code and templates: 
 ```
-$ git clone https://github.com/TonyTerrasa/catsoop-helper.git
+git clone https://github.com/TonyTerrasa/catsoop-helper.git
 ```
 
 You need the following installed in your Python environment (available in the `requirements.txt` file)
@@ -38,4 +38,42 @@ options:
   -ntb NUMBER_TEXT_BLANKS, --number-text-blanks NUMBER_TEXT_BLANKS
                         Numbers the blanks in a text with the format
                         __([text])__. Give a readable text file.
+```
+
+
+## Questions 
+
+Uses the [Kahoot template](https://kahoot.com/blog/2018/08/23/import-kahoot-from-spreadsheet/). The type of catsoop question is infered from the way you specify the question: 
+- __1 correct answer:__ multiple choice
+- __2+ correct answers:__ multiple select
+- __0 correct answers:__ short answer where each of the given options is accepted
+
+A sample xslx file in the examples file that I've included in the [examples](examples) folder. 
+
+For example running questions on [`sample.csv`](examples/sample.csv) gives: 
+```
+<question smallbox>
+    csq_prompt='They ____ (to be) nice.'
+    csq_soln = ['are', 'have been']
+    csq_check_function = lambda sub, sol: sub.lower().strip() in sol
+    csq_size = 30 # width of text box
+    csq_explanation = 'Both the present simple and present perfect are acceptable tenses in this case.'
+</question>
+
+<question multiplechoice>
+    csq_renderer = 'radio'
+    csq_prompt='The ________ singer of Paramore is Hayley Williams.'
+    csq_options= ['principal', 'amazing', 'lead', 'chart']
+    csq_soln = 'lead'
+
+</question>
+
+<question multiplechoice>
+    csq_renderer = 'checkbox'
+    csq_prompt='101 cm is _______  as big as 102 cm. (Check all that apply)'
+    csq_options= ['almost', 'barely', 'very', 'not quite']
+    csq_soln = [True, False, False, True]
+
+</question> 
+
 ```

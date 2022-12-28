@@ -122,8 +122,8 @@ def csv_to_xlsx(fname: str) -> openpyxl.Workbook:
     wb = openpyxl.Workbook()
     ws = wb.active
 
-    with open("file.csv") as f:
-        reader = csv.reader(f, delimiter=":")
+    with open(fname) as f:
+        reader = csv.reader(f, delimiter=",")
         for row in reader:
             ws.append(row)
 
