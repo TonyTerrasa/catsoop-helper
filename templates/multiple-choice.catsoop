@@ -1,0 +1,7 @@
+<question multiplechoice>
+    csq_renderer = 'radio'
+    csq_prompt='{question}'
+    csq_options= {options}
+    csq_soln = '{solution}'
+    {explanation}
+</question>

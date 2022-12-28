@@ -1,0 +1,7 @@
+<question smallbox>
+    csq_prompt='{question}'
+    csq_soln = {solution}
+    csq_check_function = lambda sub, sol: sub.lower().strip() in sol
+    csq_size = 30 # width of text box
+    {explanation}
+</question>

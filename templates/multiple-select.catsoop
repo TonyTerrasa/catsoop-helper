@@ -1,0 +1,7 @@
+<question multiplechoice>
+    csq_renderer = 'checkbox'
+    csq_prompt='{question} (Check all that apply)'
+    csq_options= {options}
+    csq_soln = {solution}
+    {explanation}
+</question>
