@@ -7,14 +7,17 @@ Download the code and templates:
 $ git clone https://github.com/TonyTerrasa/catsoop-helper.git
 ```
 
-You need the following installed in your Python environment
+You need the following installed in your Python environment (available in the `requirements.txt` file)
 ```
-@@include[requirements.txt](requirements.txt)
+et-xmlfile==1.1.0
+openpyxl==3.0.10
 ```
 
 Some shortcuts I've included in my bash-aliases to make my process nicer
 ```
-@@include[requirements.txt](requirements.txt)
+alias csh-q="python ~/projects/catsoop-helper/csh.py -q"
+alias csh-mkpg="python ~/projects/catsoop-helper/csh.py -mkpg"
+alias csh-ntb="python ~/projects/catsoop-helper/csh.py -ntb"
 ```
 
 # Usage

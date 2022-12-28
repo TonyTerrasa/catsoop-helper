@@ -20,6 +20,15 @@ NUM_COLS = 8
 # ===================================
 # helper functions for questions mode
 # ===================================
+def get_template(template_name: str) -> str: 
+    # adapted from link below to access files in the same dir as the script
+    # https://stackoverflow.com/questions/4060221/how-to-reliably-open-a-file-in-the-same-directory-as-the-currently-running-scrip
+    __location__ = os.path.realpath(os.path.join(os.getcwd(), 
+                                                 os.path.dirname(__file__)))
+    tmp = open(os.path.join(__location__, 
+                            f'templates/{template_name}.catsoop'), 'r').read()
+    return tmp
+
 def qdict_to_checkbox(question_dict: dict) -> str:
     # parse the correct answers into the correct format for the checkbox
     # the correct answers are in a comma separated
@@ -35,7 +44,8 @@ def qdict_to_checkbox(question_dict: dict) -> str:
 
     replacements["solution"] = correct_TF
 
-    tmp = open("templates/multiple-select.catsoop", "r").read()
+    tmp = get_template('multiple-select')
+
     return tmp.format(**replacements)
 
 
@@ -47,7 +57,8 @@ def qdict_to_radio(question_dict: dict) -> str:
     replacements["solution"] = int(replacements["solution"]) - 1
     replacements["solution"] = replacements["options"][replacements["solution"]]
 
-    tmp = open("templates/multiple-choice.catsoop", "r").read()
+    tmp = get_template('multiple-choice')
+
     return tmp.format(**replacements)
 
 
@@ -57,7 +68,8 @@ def qdict_to_shortanswer(question_dict: dict) -> str:
 
     replacements["solution"] = [x.lower().strip() for x in replacements["options"]]
 
-    tmp = open("templates/short-answer.catsoop", "r").read()
+    tmp = get_template('short-answer')
+
     return tmp.format(**replacements)
 
 
