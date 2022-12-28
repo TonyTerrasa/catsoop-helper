@@ -20,14 +20,17 @@ NUM_COLS = 8
 # ===================================
 # helper functions for questions mode
 # ===================================
-def get_template(template_name: str) -> str: 
+def get_template(template_name: str) -> str:
     # adapted from link below to access files in the same dir as the script
     # https://stackoverflow.com/questions/4060221/how-to-reliably-open-a-file-in-the-same-directory-as-the-currently-running-scrip
-    __location__ = os.path.realpath(os.path.join(os.getcwd(), 
-                                                 os.path.dirname(__file__)))
-    tmp = open(os.path.join(__location__, 
-                            f'templates/{template_name}.catsoop'), 'r').read()
+    __location__ = os.path.realpath(
+        os.path.join(os.getcwd(), os.path.dirname(__file__))
+    )
+    tmp = open(
+        os.path.join(__location__, f"templates/{template_name}.catsoop"), "r"
+    ).read()
     return tmp
+
 
 def qdict_to_checkbox(question_dict: dict) -> str:
     # parse the correct answers into the correct format for the checkbox
@@ -44,7 +47,7 @@ def qdict_to_checkbox(question_dict: dict) -> str:
 
     replacements["solution"] = correct_TF
 
-    tmp = get_template('multiple-select')
+    tmp = get_template("multiple-select")
 
     return tmp.format(**replacements)
 
@@ -57,7 +60,7 @@ def qdict_to_radio(question_dict: dict) -> str:
     replacements["solution"] = int(replacements["solution"]) - 1
     replacements["solution"] = replacements["options"][replacements["solution"]]
 
-    tmp = get_template('multiple-choice')
+    tmp = get_template("multiple-choice")
 
     return tmp.format(**replacements)
 
@@ -68,7 +71,7 @@ def qdict_to_shortanswer(question_dict: dict) -> str:
 
     replacements["solution"] = [x.lower().strip() for x in replacements["options"]]
 
-    tmp = get_template('short-answer')
+    tmp = get_template("short-answer")
 
     return tmp.format(**replacements)
 
@@ -129,6 +132,7 @@ def csv_to_xlsx(fname: str) -> openpyxl.Workbook:
 
     return wb
 
+
 # =================================================
 # helper functions for number_text_blanks mode
 # =================================================
@@ -145,13 +149,18 @@ def numberer(original_text: str) -> str:
     for i, m in enumerate(re.finditer(pattern, original_text)):
         b, f = m.start(), m.end()
         replacements.append(
-            (b, f, original_text[b : b + 3] + str(i + 1) + ", " + original_text[b + 3 : f])
+            (
+                b,
+                f,
+                original_text[b : b + 3] + str(i + 1) + ", " + original_text[b + 3 : f],
+            )
         )
 
     for b, f, new_string in reversed(replacements):
         new_text = new_text[:b] + new_string + new_text[f:]
 
     return new_text
+
 
 # =================================================
 # mode functions
@@ -170,6 +179,7 @@ def questions(fname: str):
     # the result is to print the questions to stdout
     questions_xlsx(wb)
 
+
 def mkpg(dir_name: str, preload_name: str = ""):
     # make a new directoy
     os.mkdir(dir_name)
@@ -182,8 +192,9 @@ def mkpg(dir_name: str, preload_name: str = ""):
         f.write(f"cs_long_name = '{preload_name}'")
         f.close()
 
+
 def number_text_blanks(fname: str):
-    original_text = open(fname, 'r').read()
+    original_text = open(fname, "r").read()
     new_text = numberer(original_text)
     print(new_text)
 
