@@ -1,5 +1,8 @@
 # catsoop-helper
-Python scripts that I use that I use in my catsoop site development
+Python scripts that I use that I use in my catsoop site development. Notably it cat: 
+- quickly make a directory for a new CATSOOP page
+- make multiple choice and short answer questions from a csv/xlsx file
+- number the blank spaces in a text for making fill-in-the-blank questions 
 
 # Install
 Download the code and templates: 
